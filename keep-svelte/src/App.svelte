@@ -2,6 +2,7 @@
   import  Router  from "svelte-spa-router";
     import Login from "./pages/auth/Login.svelte";
     import Signup from "./pages/auth/Signup.svelte";
+    import Navbar from "./pages/Navbar.svelte";
     import CreatePost from "./pages/post/CreatePost.svelte";
     import Home from "./pages/post/Home.svelte";
     import UpdatePost from "./pages/post/UpdatePost.svelte";
@@ -15,6 +16,7 @@
 </script>
 
 <main>
+  <Navbar></Navbar>
 <Router {routes}/>
 </main>
 

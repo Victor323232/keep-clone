@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -7,10 +7,10 @@ import { Task } from './entities/task.entity';
 
 @Injectable()
 export class TasksService {
-  // injetar uma instância do repositório de tarefas.
+  // injetar uma instância dentro do repositório de tarefas.
   constructor(
-    @InjectRepository(Task)
-    private readonly taskRepository: Repository<Task>,
+    @Inject('TASK_REPOSITORY')
+    private taskRepository: Repository<Task>,
   ) {}
 
   async create(createTaskDto: CreateTaskDto): Promise<Task> {

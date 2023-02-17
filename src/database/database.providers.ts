@@ -10,7 +10,7 @@ export const databaseProviders = [
         port: 5433,
         username: 'postgres',
         password: 'sasuke123',
-        database: 'keepclone',
+        database: 'postgres',
         entities: [
             __dirname + '/../**/*.entity{.ts,.js}',
         ],

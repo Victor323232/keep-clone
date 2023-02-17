@@ -2,6 +2,7 @@
     import type { ITodo } from '$root/types/todo'
   
     import AddTodo from './AddTodo.svelte'
+    import Todo from './Todo.svelte'
   
     // state
     let todos: ITodo[] = [
@@ -16,7 +17,7 @@
   
     // methods
     function generateRandomId(): string {
-          return Math.random().toString(16).slice(2)
+      return Math.random().toString(16).slice(2)
     }
   
     function addTodo(todo: string): void {
@@ -36,6 +37,15 @@
         completed: checked,
       }))
     }
+  
+    function completeTodo(id: string): void {
+      todos = todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo
+      })
+    }
   </script>
   
   <main>
@@ -47,27 +57,7 @@
       {#if todosAmount}
         <ul class="todo-list">
           {#each todos as todo (todo.id)}
-            <li class="todo">
-              <div class="todo-item">
-                <div>
-                  <input
-                    checked={todo.completed}
-                    id="todo"
-                    class="toggle"
-                    type="checkbox"
-                  />
-                  <label
-                    aria-label="Check todo"
-                    class="todo-check"
-                    for="todo"
-                  />
-                </div>
-                <span class="todo-text">{todo.text}</span>
-                <button aria-label="Remove todo" class="remove" />
-              </div>
-  
-              <!-- <input class="edit" type="text" autofocus /> -->
-            </li>
+            <Todo {todo} {completeTodo} />
           {/each}
         </ul>
   
@@ -85,4 +75,3 @@
   </main>
   
   <!-- ... -->
-  

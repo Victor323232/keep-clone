@@ -6,7 +6,7 @@
     export let selectedFilter: FiltersType
     export let setFilter: SetFilterType
   
-      let filters = ['all', 'active', 'completed']
+      let filters = ['Todos', 'Pendentes', 'Completos']
   </script>
   
   <div class="filters">

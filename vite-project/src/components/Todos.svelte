@@ -15,7 +15,7 @@ $: {
       localStorage.setItem('todos', JSON.stringify(todos))
   }
   
-    let selectedFilter: FiltersType = 'all'
+    let selectedFilter: FiltersType = 'Todos'
   
     // computed
     $: todosAmount = todos.length
@@ -70,11 +70,11 @@ $: {
   
     function filterTodos(todos: ITodo[], filter: FiltersType): ITodo[] {
       switch (filter) {
-        case 'all':
+        case 'Todos':
           return todos
-        case 'active':
+        case 'Pendentes':
           return todos.filter((todo) => !todo.completed)
-        case 'completed':
+        case 'Completos':
           return todos.filter((todo) => todo.completed)
       }
     }
@@ -85,7 +85,7 @@ $: {
   </script>
   
   <main>
-    <h1 class="title">todos</h1>
+    <h1 class="title">Keep Clone</h1>
   
     <section class="todos">
       <AddTodo {addTodo} {toggleCompleted} {todosAmount} />

@@ -14,7 +14,7 @@
       todo = ''
     }
   </script>
-  
+  <!-- Formulario pra adicionar tarefas-->
   <form on:submit|preventDefault={handleSubmit}>
       {#if todosAmount > 0}
       <input
@@ -23,8 +23,8 @@
         id="toggle-all"
         class="toggle-all"
       />
-        <label aria-label="Mark all as complete" for="toggle-all">
-          Mark all as complete
+        <label aria-label="Marque todas tarefas concluidas" for="toggle-all">
+          Marque todas tarefas concluidas
         </label>
       {/if}
   
@@ -32,7 +32,7 @@
           bind:value={todo}
       id="new-todo"
       class="new-todo"
-      placeholder="What needs to be done?"
+      placeholder="Escreva aqui sua tarefa"
       type="text"
       autofocus
     />

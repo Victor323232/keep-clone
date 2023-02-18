@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { FiltersType, ITodo } from '$root/types/todo'
+    
   
     import AddTodo from './AddTodo.svelte'
     import Todo from './Todo.svelte'
@@ -8,12 +9,11 @@
     import ClearTodos from './ClearTodos.svelte'
   
     // state
-    let todos: ITodo[] = [
-      { id: '1e4a59703af84', text: 'Todo 1', completed: true },
-      { id: '9e09bcd7b9349', text: 'Todo 2', completed: false },
-      { id: '9e4273a51a37c', text: 'Todo 3', completed: false },
-      { id: '53ae48bf605cc', text: 'Todo 4', completed: false },
-    ]
+    let todos: ITodo[] = JSON.parse(localStorage.getItem('todos')) ?? []
+
+$: {
+      localStorage.setItem('todos', JSON.stringify(todos))
+  }
   
     let selectedFilter: FiltersType = 'all'
   
